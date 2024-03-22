@@ -3,7 +3,10 @@ using Raylib_cs;
 
 namespace Shooter {
 
-    public struct PlaneEntity {
+    // 类就是蓝图(设计图)
+    // 杯子的类是设计图
+    // 杯子是实例
+    public class PlaneEntity {
 
         // 成员字段
         public int id;
