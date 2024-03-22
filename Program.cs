@@ -1,27 +1,37 @@
-﻿using Raylib_cs;
+﻿using System.Numerics;
+using Raylib_cs;
 
-public static class Program
-{
+namespace Shooter {
 
-    public static void Main()
-    {
-        Raylib.InitWindow(800, 600, "Hello World");
+    public static class Program {
 
-        while(!Raylib.WindowShouldClose())
-        {
-            // 开始绘制
-            Raylib.BeginDrawing();
+        public static void Main() {
 
-            // 画背景
-            Raylib.ClearBackground(Color.RayWhite);
-            Raylib.DrawText("Hello, world!", 12, 12, 20, Color.Black);
-            
-            // 结束绘制
-            Raylib.EndDrawing();
+            // 所有的数据都在 Context 里
+            Context ctx = new Context();
+
+            GameController.StartGame(ref ctx);
+
+            Raylib.InitWindow(800, 600, "Hello World");
+
+            while (!Raylib.WindowShouldClose()) {
+
+                // 开始绘制
+                Raylib.BeginDrawing();
+
+                // 画背景
+                Raylib.ClearBackground(Color.RayWhite);
+
+                // 画飞机
+                Raylib.DrawCircleV(ctx.plane.pos, ctx.plane.radius, ctx.plane.color);
+
+                // 结束绘制
+                Raylib.EndDrawing();
+            }
+
+            Raylib.CloseWindow();
+
         }
 
-        Raylib.CloseWindow();
-
     }
-
 }
